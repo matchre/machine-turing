@@ -1,5 +1,11 @@
 {
 	"name": "La machine de Turing",
 	"width": "800px",
-	"height": "600px"
+	"height": "600px",
+	"links" : [
+		{
+			"title" : "Un enseignant fait évoluer ce grain",
+			"uri" : "http://dichotomies.fr/2013/infomath/applets/machine-de-turing/"
+		}
+		]
 }
