@@ -1,3 +1,5 @@
+jQuery.noConflict();
+
 /** Variables */
 var turing = {
     binaire: "",
@@ -13,15 +15,15 @@ var turing = {
     left:0,
     tableau: [],
     machines: [],
-    chaine:  $('#grain-turing-chaine'),
-    input: $('#grain-turing-input'),
-    select: $('#grain-turing-select'),
-    tbody: $('#grain-turing-tbody'),
-    pasapas: $('#grain-turing-pasapas'),
-    commencer: $('#grain-turing-commencer'),
-    texte : $('#grain-turing-texte'),
-    range : $('#grain-turing-range'),
-    turing : $('#grain-turing'),
+    chaine:  jQuery('#grain-turing-chaine'),
+    input: jQuery('#grain-turing-input'),
+    select: jQuery('#grain-turing-select'),
+    tbody: jQuery('#grain-turing-tbody'),
+    pasapas: jQuery('#grain-turing-pasapas'),
+    commencer: jQuery('#grain-turing-commencer'),
+    texte : jQuery('#grain-turing-texte'),
+    range : jQuery('#grain-turing-range'),
+    turing : jQuery('#grain-turing'),
     leftInit: 350
 };
 
@@ -89,9 +91,9 @@ turing.machines[5] = new Array(
 );
 
 /** Compatibilité Firefox*/
-if($.browser.mozilla) {
+if(jQuery.browser.mozilla) {
     turing.mozilla = function () {
-        var div = $('<select id="grain-turing-select" title="Vitesse de défilement"></select>');
+        var div = jQuery('<select id="grain-turing-select" title="Vitesse de défilement"></select>');
         for(var i = 1 ; i <= turing.range.attr("max") ; i++)
             div.append('<option value="'+i+'">'+i+'</option>');
         turing.range.replaceWith(div);
@@ -125,7 +127,7 @@ turing.genTable = function () {
     turing.m = turing.select.val();
     turing.tbody.empty();
     for(var i = 0; i < turing.machines[turing.m].length ; i++) {
-        var div = $('<tr id="grain-turing-tbody-tr'+i+'"></tr>');
+        var div = jQuery('<tr id="grain-turing-tbody-tr'+i+'"></tr>');
         for(var j = 0 ; j < 5 ; j ++) {
             var t = turing.machines[turing.m][i][j];
             if(t === '')
@@ -138,11 +140,11 @@ turing.genTable = function () {
     var c = 1;
     for(i = turing.machines[turing.m].length - 2 ; i >= 0 ; i-- ) {
         if(turing.machines[turing.m][i][0] == e) {
-            $('#grain-turing-tbody-tr'+(i+1)+'-td'+0+'').hide();
+            jQuery('#grain-turing-tbody-tr'+(i+1)+'-td'+0+'').hide();
             c++;
         }
         else{
-            $('#grain-turing-tbody-tr'+(i+1)+'-td'+0+'').attr('rowspan',c);
+            jQuery('#grain-turing-tbody-tr'+(i+1)+'-td'+0+'').attr('rowspan',c);
             e=turing.machines[turing.m][i][0];
             c=1;
         }
@@ -160,7 +162,7 @@ turing.majChaine = function () {
     
     turing.chaine.empty();
     for(var i = -30 ; i < turing.tableau.length + 30 ; i++) {
-        var div = $('<div id="grain-turing-chaine-'+i+'">'+(turing.tableau[i] || '')+'</div>');
+        var div = jQuery('<div id="grain-turing-chaine-'+i+'">'+(turing.tableau[i] || '')+'</div>');
         div.css("left",(i*25)+"px");
         turing.chaine.append(div);
     }
@@ -174,7 +176,7 @@ turing.lireInput = function () {
     turing.binaire = turing.input.val();
     turing.initialisation();
 };
-$("#grain-turing-btnInput").click(turing.lireInput);
+jQuery("#grain-turing-btnInput").click(turing.lireInput);
 
 /** Initialisation */
 turing.initialisation = function() {
@@ -230,7 +232,7 @@ turing.etape = function () {
             for(var id = 0 ; id < turing.machines[turing.m].length ; id ++) {
                 b = turing.machines[turing.m][id];
                 if(b[0] == turing.e)
-                    $('#grain-turing-tbody-tr'+id+'-td'+j+'').addClass("encours");
+                    jQuery('#grain-turing-tbody-tr'+id+'-td'+j+'').addClass("encours");
             }
             break;
         case 1:
@@ -238,7 +240,7 @@ turing.etape = function () {
             for(i = 0 ; i < turing.machines[turing.m].length ; i ++) {
                 b = turing.machines[turing.m][i];
                 if(b[0] == turing.e && b[1] == c.html()) {
-                    $('#grain-turing-tbody-tr'+i+'-td'+j+'').addClass("encours");
+                    jQuery('#grain-turing-tbody-tr'+i+'-td'+j+'').addClass("encours");
                     turing.i = i;
                     break;
                 }
@@ -246,12 +248,12 @@ turing.etape = function () {
             break;
         case 2:
             turing.texte.html("Symbole écrit : \""+((b[2] !== '') ? b[2] : 'VIDE')+"\"");
-            $('#grain-turing-tbody-tr'+i+'-td'+j+'').addClass("encours");
+            jQuery('#grain-turing-tbody-tr'+i+'-td'+j+'').addClass("encours");
             c.html(b[2]);
             break;
         case 3:
             turing.texte.html("Mouvement du ruban : vers la "+b[3]);
-            $('#grain-turing-tbody-tr'+i+'-td'+j+'').addClass("encours");
+            jQuery('#grain-turing-tbody-tr'+i+'-td'+j+'').addClass("encours");
             c.removeClass("encours");
             if(b[3] == 'gauche')
                 turing.c++;
@@ -261,7 +263,7 @@ turing.etape = function () {
             break;
         case 4:
             turing.texte.html("Nouvel état : "+b[4]);
-            $('#grain-turing-tbody-tr'+i+'-td'+j+'').addClass("encours");
+            jQuery('#grain-turing-tbody-tr'+i+'-td'+j+'').addClass("encours");
             turing.e = b[4];
             if(!turing.e.match(/^e[0-9]+$/)) {
                 turing.interruption();
