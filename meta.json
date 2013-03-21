@@ -16,6 +16,7 @@
 	"authors" : [
 		{			
 		        "name" : "Ben Abdallah, Hamdi",
+		        "email" : "hamdi.benabd@gmail.com",
 			"role" : "auteur",
 			"comment" : "version initiale en Java"
 		},
