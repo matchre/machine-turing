@@ -2,7 +2,7 @@
 	"name": "La machine de Turing",
 	"width": "800px",
 	"height": "600px",
-	"comment" : "",
+	"comment" : "Simulation de la machine de turing, en code ouvert pour y proposer d'autres exemples de programme",
 	"links" : [
 		{
 			"title" : "Document original dans lequel ce grain s'insère",
