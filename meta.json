@@ -5,7 +5,11 @@
 	"comment" : "Simulation de la machine de turing, en code ouvert pour y proposer d'autres exemples de programme",
 	"links" : [
 		{
-			"title" : "Document original dans lequel ce grain s'insère",
+			"title" : "Document dans lequel ce grain s'insère",
+			"uri" : "http://interstices.info/machine-turing-interactive"
+		},
+		{
+			"title" : "Document original dans lequel le grain Java s'insère",
 			"uri" : "http://interstices.info/applet-machine-turing"
 		},
 		{
